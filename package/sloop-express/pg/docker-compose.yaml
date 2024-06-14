@@ -1,0 +1,19 @@
+version: "3.9"
+
+volumes:
+  postgres_data:
+
+services:
+  postgres:
+    image: "postgres:16-alpine"
+    ports:
+      - "5555:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data:/home
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: sloop-test-user
+      POSTGRES_DB: sloop-test-db
+      POSTGRES_PASSWORD: sloop-test-pwd
+    

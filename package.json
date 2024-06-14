@@ -1,0 +1,12 @@
+{
+  "name": "unfinished",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "make-dotenv": "ln -s node_modules/sloop-common/.env .env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

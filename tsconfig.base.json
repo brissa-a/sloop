@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "ESNext",
+        "module": "ESNext",
+        "outDir": "dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "noUncheckedIndexedAccess": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": true,
+        "useDefineForClassFields": true,
+        "moduleResolution": "node",
+        "noErrorTruncation": true,
+        "paths": {
+            "@sloop-common/*": [
+                "package/sloop-common/*"
+            ],
+            "@sloop-express/*": [
+                "package/sloop-express/src/*"
+            ],
+            "@sloop-vite/*": [
+                "package/sloop-vite/src/*"
+            ],
+        }
+    },
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Recommended"
+}

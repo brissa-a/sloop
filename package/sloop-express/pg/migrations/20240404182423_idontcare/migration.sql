@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "MeetingLogEntry" ALTER COLUMN "doneAt" SET DEFAULT CURRENT_TIMESTAMP;

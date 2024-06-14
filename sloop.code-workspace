@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"name": "front (sloop-vite)",
+			"path": "./package/sloop-vite"
+		},
+		{
+			"name": "back (sloop-express)",
+			"path": "./package/sloop-express"
+		},
+		{
+			"name": "common (sloop-common)",
+			"path": "./package/sloop-common"
+		},
+		{
+			"name": "bdd (sloop-pg)",
+			"path": "./package/sloop-pg"
+		},
+		{
+			"name": "queue (sloop-kafka)",
+			"path": "./package/sloop-kafka"
+		},
+		{
+			"name": "all",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

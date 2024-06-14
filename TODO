@@ -1,0 +1,79 @@
+TODO:
+- General
+    - Use new UI
+    - Search anything meeting/voting/propositon/group
+    - Iconographie
+        - Copivote
+        - Keep unseen
+
+- Security/Auth
+    - Save user agent and ip
+    - Delete a session
+
+- Intégration
+    - Discord
+    - Discourse
+    - Portail pirate
+
+- User
+    - finish Handle event subscription
+    # Éditer son profil
+        # changer de mot de passe
+        # changer de pseudo
+        # changer de mail
+        # changer de photo      
+
+- Meeting
+    - Envoyer des invitations
+    - Donner la parole
+    - Enregistrer les présences
+    - Rework history loading
+    # parler pour quelqu'un
+    - Controle du scroll ?
+    - Faire grossir le bouton "Démarrer la réunion" quand on s'approche de l'heure
+    - Gérer termienr la réunion / Corriger fin de réunion
+    - Chat
+        - Grouper les event commun
+        - Edition des messages
+        - Supprimer des messages si on est admin
+
+# Proposition
+    # Faire des propositions avec co-auteur
+    - Demander a être co-auteur
+    # Soumettre au vote lors d'une réunion
+    - Débattre pour/contre
+    - "Devrait être soumise au vote a"
+    - Transmettre a un autre group
+
+# Gestion des membres
+
+- Group
+    - finish Handle event subscription
+    - Join/Leave group
+        - Notifier les gens qui le copié jusqu'a mtnt que c'est mtnt plus possible
+    - "Voir tous les meetings" (Agenda)
+    - "Voir tous les copivotes"
+    - Archiver automatiquement
+    - Ajouter les onglets Agenda / Membres / Copivotes
+    - Copi
+        - Gérer les copies qui expirent a cause de l'expiration de l'adhésion du copié
+    - Catégoriser un groupe (par servira a archiver)
+
+# Voting
+    - Type de vote
+        - Borda
+    - Add scheduler to start a voting
+    - Envoyer des notifications au donneur de delegation, quand un receveur vote
+    - Désactivé les boutons de vote après la fin du vote
+    # Export CSV des votes
+    # Gérer les votes pas encore démarré
+    # Annulter un vote (set start date and end date to now)
+    - Utiliser useIntersecting for VotingCard https://stackoverflow.com/questions/45514676/react-check-if-element-is-visible-in-dom
+
+- Note / Question
+    - Est-ce qu'on donne la possibilité de répondre "je ne sais pas" ?
+    - Les calcule de pv peuvent être imprécis si on a des votes avec des délégations
+    - Actuellement qui peut créer des réunions et de votes ?
+
+    
+- Inline, Minimal/Miniature
