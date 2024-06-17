@@ -1,4 +1,4 @@
-import { Box, Button, Card, Group, ScrollArea, Stack, Text, Textarea } from "@mantine/core"
+import { ActionIcon, Box, Button, Card, Group, ScrollArea, Stack, Text, Textarea } from "@mantine/core"
 import { notifications } from "@mantine/notifications"
 import { UserJwtPayload } from "@sloop-common/jwt"
 import { fromPrismaSuperjson } from "@sloop-common/misc/superjson"
@@ -7,13 +7,14 @@ import { useSloop } from "@sloop-vite/hooks/sloop"
 import { humanFriendlyFromTo } from "@sloop-vite/misc/date"
 import { trpcReact } from "@sloop-vite/misc/trpc"
 import { MeetingByIdOutput } from "@sloop-vite/routes/meeting.$id.$slug.lazy"
-import { IconHandOff, IconHandStop } from "@tabler/icons-react"
+import { IconHandOff, IconHandStop, IconSend } from "@tabler/icons-react"
 import React, { useEffect, useRef } from "react"
 import { SloopAvatar } from "../user/Avatar"
 import { CreateVotingModal } from "../voting/CreateVotingModal"
 import { VotingCard } from "./renderers/VotingRenderer"
 import { useDisclosure } from "@mantine/hooks"
 import ms from "ms"
+import { set } from "lodash"
 
 type ChatProps = {
     meeting: MeetingByIdOutput
@@ -58,21 +59,36 @@ export const Chat = ({ meeting, pointAgendaId, openVoteConsole }: ChatProps) => 
 
 const SendMessageSection = ({ meeting, user }: { meeting: MeetingByIdOutput, user: UserJwtPayload }) => {
     const sendMessage = trpcReact.meeting.message.add.useMutation()
+    const [message, setMessage] = React.useState<string>("")
 
-    return <Box>
-        <Textarea placeholder={`Écrire un message concernant: ${meeting.currentAgendaPoint?.name || meeting.title}`} onKeyDown={(event) => {
-            if (event.key === 'Enter' && event.ctrlKey) {
-                sendMessage.mutate({
-                    meetingId: meeting.id,
-                    userId: user.id,
-                    message: event.currentTarget.value,
-                    agendaPointId: meeting.currentAgendaPoint?.id
-                })
-                event.currentTarget.value = ''
-            }
-        }
-        } />
-    </Box>
+    const onSend = () => {
+        sendMessage.mutate({
+            meetingId: meeting.id,
+            userId: user.id,
+            message,
+            agendaPointId: meeting.currentAgendaPoint?.id
+        })
+        setMessage('')
+    }
+
+    return <Group gap='xs'>
+        <Textarea
+            placeholder={`Écrire un message concernant: ${meeting.currentAgendaPoint?.name || meeting.title}`}
+            value={message}
+            onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                    if (!event.shiftKey) {
+                        onSend()
+                        event.preventDefault()
+                    }
+                }
+            }}
+            onChange={(event) => {
+                setMessage(event.currentTarget.value)
+            }}
+        />
+        <ActionIcon size='xl' onClick={onSend}><IconSend /></ActionIcon>
+    </Group>
 }
 
 function mix(logEntries: MeetingByIdOutput['logEntries'], messages: MeetingByIdOutput['messages'], voting: MeetingByIdOutput['voting']) {
